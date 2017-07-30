@@ -1,4 +1,4 @@
-package com.yogeesh.datastructures.Lists;
+package com.yogeesh.datastructures.lists;
 
 /**
  * Created by yogeesh.srkvs@gmail.com on 7/29/17.
