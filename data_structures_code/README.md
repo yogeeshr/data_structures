@@ -9,8 +9,11 @@
 * In Order Traversal
 * Pre Order Traversal
 * Post Order Traversal
+* Height of Tree
 
-### BinaryTree.java ( Implementaation of Binary Search Tree )
+### BinaryTree.java ( Implementaation of Binary Tree )
+
+* Mirror binary tree in place
 
 * Under Progress
 
