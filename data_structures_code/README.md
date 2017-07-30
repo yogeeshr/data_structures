@@ -2,7 +2,7 @@
 
 ## Trees 
 
-### BinarySearchTree.java ( Implementaation of Binary Search Tree )
+### BinarySearchTree.java ( Implementation of Binary Search Tree )
 
 * Add
 * Delete
