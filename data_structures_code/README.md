@@ -12,7 +12,7 @@
 * Height of Tree
 * Level order traversal
 
-### BinaryTree.java ( Implementaation of Binary Tree )
+### BinaryTree.java ( Implementation of Binary Tree )
 
 * Mirror binary tree in place
 * Zig zag traversal
@@ -21,6 +21,6 @@
 
 ## Lists
 
-### SinglyLinkedList.java ( Implementaation of Singly Linked List )
+### SinglyLinkedList.java ( Implementation of Singly Linked List )
 
 * Under Progress
