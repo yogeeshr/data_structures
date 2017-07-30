@@ -8,6 +8,8 @@ import com.yogeesh.datastructures.common.Node;
  */
 public class BinaryTree extends BinarySearchTree {
 
+    private boolean leftViewFlag = true;
+
     /**
      * Method to print tree Post Order
      */
@@ -37,6 +39,52 @@ public class BinaryTree extends BinarySearchTree {
         return root;
     }
 
+    /**
+     * Level Order ZigZag Traversal
+     * @param node
+     * @param level
+     */
+    public void traverseLevelZigZag(Node node, int level, Boolean leftToRight){
+
+        if (null==node) {
+            return;
+        }
+
+        if (level<1) {
+            System.out.println("Invalid level number");
+        }
+
+        if (1==level) {
+            System.out.println("| [ " + node.getData().getInfo() + " ] | ");
+            return;
+        }
+
+        traverseLevelZigZag((leftToRight) ? node.getPreviousPointer(): node.getNextPointer(), level - 1, leftToRight);
+        traverseLevelZigZag((leftToRight) ? node.getNextPointer(): node.getPreviousPointer(), level - 1, leftToRight);
+
+    }
+
+    /**
+     * Level view of tree
+     * @param node
+     * @param level
+     */
+    public void leftView(Node node, int level){
+
+        if (null==node) {
+            return;
+        }
+
+        if (level==1 && this.leftViewFlag) {
+            System.out.println("| [ " + node.getData().getInfo() + " ] | ");
+            this.leftViewFlag =false;
+        }
+
+        leftView(node.getPreviousPointer(), level-1);
+        leftView(node.getNextPointer(), level-1);
+
+    }
+
     public static void main(String[] args) {
         BinaryTree binaryTree = new BinaryTree();
 
@@ -48,6 +96,7 @@ public class BinaryTree extends BinarySearchTree {
         binaryTree.root = binaryTree.insert(binaryTree.root, 13);
         binaryTree.add(14);
         binaryTree.add(17);
+        binaryTree.add(18);
 
         System.out.println(" In Order Traversal ");
         binaryTree.displayInOrderTree();
@@ -72,6 +121,21 @@ public class BinaryTree extends BinarySearchTree {
 
         binaryTree.displayInOrderTree();
 
+
+        System.out.println(" Spiral Traversal of Tree . . . ");
+        int height = binaryTree.heightOfTree(binaryTree.root);
+
+        Boolean leftToRight = false;
+        for (int i=1; i<=height; i++) {
+            binaryTree.traverseLevelZigZag(binaryTree.root, i, leftToRight);
+            leftToRight = !leftToRight;
+        }
+
+        System.out.println(" Left View of Tree . . . ");
+        for (int i=1; i<=height; i++) {
+            binaryTree.leftViewFlag = true;
+            binaryTree.leftView(binaryTree.root, i);
+        }
 
     }
 

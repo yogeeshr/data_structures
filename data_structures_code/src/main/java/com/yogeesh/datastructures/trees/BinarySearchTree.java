@@ -308,6 +308,7 @@ public class BinarySearchTree {
      * @return
      */
     public int heightOfTree(Node node){
+
         if (null==node) {
             return 0;
         }
@@ -315,6 +316,30 @@ public class BinarySearchTree {
         int height = max(heightOfTree(node.getPreviousPointer()), heightOfTree(node.getNextPointer()));
 
         return height+1;
+    }
+
+    /**
+     * Level Order Traversal
+     * @param node
+     * @param level
+     */
+    public void traverseLevel(Node node, int level){
+
+        if (null==node) {
+            return;
+        }
+
+        if (level<1) {
+            System.out.println("Invalid level number");
+        }
+
+        if (1==level) {
+            System.out.println("| [ " + node.getData().getInfo() + " ] | ");
+            return;
+        }
+
+        traverseLevel(node.getPreviousPointer(), level-1);
+        traverseLevel(node.getNextPointer(), level-1);
     }
 
     /**
@@ -347,6 +372,12 @@ public class BinarySearchTree {
         bst.displayInOrderTree();
 
         System.out.println(" Height of the tree is [ "+bst.heightOfTree(bst.root)+" ]");
+
+        // Level Order Traversal
+        for (int i=1; i<=bst.heightOfTree(bst.root); i++) {
+            System.out.println(" Traversing Level : "+i);
+            bst.traverseLevel(bst.root, i);
+        }
 
     }
 }

@@ -10,12 +10,14 @@
 * Pre Order Traversal
 * Post Order Traversal
 * Height of Tree
+* Level order traversal
 
 ### BinaryTree.java ( Implementaation of Binary Tree )
 
 * Mirror binary tree in place
+* Zig zag traversal
+* Left view of tree
 
-* Under Progress
 
 ## Lists
 
