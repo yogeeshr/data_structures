@@ -11,6 +11,7 @@
 * Post Order Traversal
 * Height of Tree
 * Level order traversal
+* Least common ancestor
 
 ### BinaryTree.java ( Implementation of Binary Tree )
 

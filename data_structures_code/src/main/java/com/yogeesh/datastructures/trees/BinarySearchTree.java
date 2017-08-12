@@ -3,6 +3,8 @@ package com.yogeesh.datastructures.trees;
 import com.yogeesh.datastructures.common.Data;
 import com.yogeesh.datastructures.common.Node;
 
+import java.util.ArrayList;
+
 /**
  * Created by yogeesh.srkvs@gmail.com on 7/29/17.
  */
@@ -343,6 +345,79 @@ public class BinarySearchTree {
     }
 
     /**
+     * Least common ancestor
+     * @param data1
+     * @param data2
+     */
+    public void leastCommonAncestor(int data1, int data2){
+        ArrayList <Node>node1Traversal = new ArrayList();
+        ArrayList <Node>node2Traversal = new ArrayList();
+
+        Node node = root;
+        while (node!=null) {
+            node1Traversal.add(node);
+
+            if (node.getData().getInfo()==data1) {
+                break;
+            }
+
+            if (node.getData().getInfo()>data1) {
+                node = node.getPreviousPointer();
+            } else {
+                node = node.getNextPointer();
+            }
+        }
+
+        Node node1 = root;
+        while (node1!=null) {
+            node2Traversal.add(node1);
+
+            if (node1.getData().getInfo()==data2) {
+                break;
+            }
+
+            if (node1.getData().getInfo()>data2) {
+                node1 = node1.getPreviousPointer();
+            } else {
+                node1 = node1.getNextPointer();
+            }
+        }
+
+        if (node1==null || node==null) {
+            System.out.println("One of nodes not found");
+            return;
+        }
+
+        int i=0, flag=0;
+
+        Node common = null;
+
+        while ( (node1Traversal.size()!=0 && node2Traversal.size()!=0) &&
+                (i<node1Traversal.size() && i<node2Traversal.size()) &&
+                node1Traversal.get(i).getData().getInfo() == node2Traversal.get(i).getData().getInfo()) {
+            flag=1;
+            common=node1Traversal.get(i);
+            ++i;
+        }
+
+        if (0==flag) {
+            System.out.println("No Common node at all | elements not in tree");
+        }
+
+        for (int j=0; j<node1Traversal.size(); j++) {
+            System.out.print(node1Traversal.get(j).getData().getInfo()+"\t");
+        }
+
+        System.out.println();
+
+        for (int j=0; j<node2Traversal.size(); j++) {
+            System.out.print(node2Traversal.get(j).getData().getInfo()+"\t");
+        }
+
+        System.out.println("\n\nLeast common ancestor : for ("+data1+","+data2+") : "+common.getData().getInfo());
+    }
+
+    /**
      * Entry point
      * @param args
      */
@@ -378,6 +453,13 @@ public class BinarySearchTree {
             System.out.println(" Traversing Level : "+i);
             bst.traverseLevel(bst.root, i);
         }
+
+        bst.add(20);
+        bst.add(19);
+        bst.add(21);
+
+        System.out.println("\n[ Least common ancestor Quest ]");
+        bst.leastCommonAncestor(20, 21);
 
     }
 }
