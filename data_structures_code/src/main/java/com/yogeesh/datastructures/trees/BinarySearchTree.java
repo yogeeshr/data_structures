@@ -349,7 +349,7 @@ public class BinarySearchTree {
      * @param data1
      * @param data2
      */
-    public void leastCommonAncestor(int data1, int data2){
+    public void leastCommonAncestor(int data1, int data2) {
         ArrayList <Node>node1Traversal = new ArrayList();
         ArrayList <Node>node2Traversal = new ArrayList();
 
@@ -418,13 +418,40 @@ public class BinarySearchTree {
     }
 
     /**
+     * Method to check isomorpishim of tree
+     * Isomorphic : One tree can be got by rotating other trees node left to right swaps
+     * @param node1
+     * @param node2
+     * @return
+     */
+    public static boolean isIsomorphic(Node node1, Node node2) {
+
+        if (null==node1 && null==node2) {
+            return true;
+        }
+
+        if (null==node1 || null==node2) {
+            return false;
+        }
+
+        if (node1.getData().getInfo()!=node2.getData().getInfo()) {
+            return false;
+        }
+
+        return ( ( (isIsomorphic(node1.getPreviousPointer(), node2.getPreviousPointer())) && (isIsomorphic(node1.getNextPointer(), node2.getNextPointer())) ) ||
+                 ( (isIsomorphic(node1.getPreviousPointer(), node2.getNextPointer())) && (isIsomorphic(node1.getNextPointer(), node2.getPreviousPointer())) )
+                );
+
+    }
+
+    /**
      * Entry point
      * @param args
      */
     public static void main(String[] args) {
+
         BinarySearchTree bst = new BinarySearchTree();
 
-        System.out.println(" Inserting element . . .");
         bst.root = bst.insert(bst.root, 6);
         bst.root = bst.insert(bst.root, 1);
         bst.root = bst.insert(bst.root, 5);
@@ -460,6 +487,27 @@ public class BinarySearchTree {
 
         System.out.println("\n[ Least common ancestor Quest ]");
         bst.leastCommonAncestor(20, 21);
+
+        bst.displayInOrderTree();
+
+        BinarySearchTree bst1 = new BinarySearchTree();
+
+        bst1.root = bst1.insert(bst1.root, 6);
+        bst1.root = bst1.insert(bst1.root, 1);
+        bst1.root = bst1.insert(bst1.root, 5);
+        bst1.add(2);
+        bst1.root = bst1.insert(bst1.root, 3);
+        bst1.add(4);
+        bst1.add(7);
+        bst1.delete(2);
+        bst1.add(20);
+        bst1.add(19);
+        bst1.add(21);
+
+        //bst.displayInOrderTree();
+        //bst1.displayInOrderTree();
+
+        System.out.println("Both trees isomorphism is : "+isIsomorphic(bst.root, bst1.root));
 
     }
 }
