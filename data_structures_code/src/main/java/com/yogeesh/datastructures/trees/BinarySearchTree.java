@@ -529,7 +529,7 @@ public class BinarySearchTree {
 
         Node n = bst.lowsetCommonAncestorGeneric(bst.root, 13,14);
 
-        System.out.println("LCA Generic : "+(null!=n)? n.getData().getInfo(): " No Common ancestor");
+        System.out.println("LCA Generic : "+((null!=n)? n.getData().getInfo(): " No Common ancestor"));
 
         bst.displayInOrderTree();
 
