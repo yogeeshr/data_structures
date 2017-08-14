@@ -445,6 +445,45 @@ public class BinarySearchTree {
     }
 
     /**
+     *
+     * @param node
+     * @param data1
+     * @param data2
+     */
+    public Node lowsetCommonAncestorGeneric(Node node, int data1, int data2) {
+
+        if (null==node || node.getData().getInfo()==data1 || node.getData().getInfo()==data2) {
+            return node;
+        }
+
+        if (null!=node) {
+            Node n1 = lowsetCommonAncestorGeneric(node.getPreviousPointer(), data1, data2);
+            Node n2 = lowsetCommonAncestorGeneric(node.getNextPointer(), data1, data2);
+
+            if (n1==null && n2!=null) {
+                return n2;
+            } else if (n1!=null && n2==null) {
+                return n1;
+            } else if (n1!=null && n2!=null) {
+                return node;
+            } else if (null==n1 && n2 == null) {
+                return null;
+            }
+
+//            Optimization
+//            if (n1.getData().getInfo()!=data1 || n1.getData().getInfo()!=data2) {
+//                System.out.println("LCA is : "+n1.getData().getInfo());
+//            } else {
+//                Node n2 = lowsetCommonAncestorGeneric(node.getNextPointer(), data1, data2);
+//            }
+
+        }
+
+        return null;
+
+    }
+
+    /**
      * Entry point
      * @param args
      */
@@ -486,7 +525,11 @@ public class BinarySearchTree {
         bst.add(21);
 
         System.out.println("\n[ Least common ancestor Quest ]");
-        bst.leastCommonAncestor(20, 21);
+        bst.leastCommonAncestor(3, 4);
+
+        Node n = bst.lowsetCommonAncestorGeneric(bst.root, 13,14);
+
+        System.out.println("LCA Generic : "+(null!=n)? n.getData().getInfo(): " No Common ancestor");
 
         bst.displayInOrderTree();
 
@@ -510,4 +553,5 @@ public class BinarySearchTree {
         System.out.println("Both trees isomorphism is : "+isIsomorphic(bst.root, bst1.root));
 
     }
+
 }
