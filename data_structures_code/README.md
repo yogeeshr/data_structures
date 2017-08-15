@@ -25,4 +25,9 @@
 
 ### SinglyLinkedList.java ( Implementation of Singly Linked List )
 
+## Stacks
+* Common push pop peek
+* Find Min in O(1)
+* Find max in O(1)
+
 * Under Progress
