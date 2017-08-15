@@ -27,8 +27,16 @@
 
 ## Stacks
 
+###Stack.java
+
 * Common push pop peek
+
+###FindMinStack.java
+
 * Find Min in O(1)
+
+###FindMaxStack.java
+
 * Find max in O(1)
 
 * Under Progress
