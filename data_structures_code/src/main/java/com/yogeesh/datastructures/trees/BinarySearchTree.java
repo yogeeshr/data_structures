@@ -10,7 +10,13 @@ import java.util.ArrayList;
  */
 public class BinarySearchTree {
 
-    Node root = null;
+    public Node root = null;
+    Node head;
+
+    // Initialize previously visited node as NULL. This is
+    // static so that the same value is accessible in all recursive
+    // calls
+    static Node prev = null;
 
     /**
      * Method to add data to BST - Non recursive code / Iterative
@@ -230,7 +236,10 @@ public class BinarySearchTree {
             return node;
         }
 
-        System.out.println("| [ " + node.getData().getInfo() + " ] | ");
+        System.out.println("| [ " + node.getData().getInfo() + " ] | Next : "+
+                ((node.getNextPointer()!=null)? node.getNextPointer().getData().getInfo(): "null") +"| Prev : "
+                + ((node.getPreviousPointer()!=null)? node.getPreviousPointer().getData().getInfo(): "null") );
+
         showPreOrder(node.getPreviousPointer());
         showPreOrder(node.getNextPointer());
 
@@ -484,6 +493,52 @@ public class BinarySearchTree {
     }
 
     /**
+     * Method to convert tree to doubly linked list
+     * @param node
+     */
+    public void convertToDll(Node node) {
+
+        if (null==node) {
+            return;
+        }
+
+        convertToDll(node.getNextPointer());
+        convertToDll(node.getPreviousPointer());
+
+        // -- Crux of the logic start --
+
+        Node right = node.getNextPointer();
+        Node left = node.getPreviousPointer();
+
+        while (left!=null && left.getNextPointer()!=null) {
+            left=left.getNextPointer();
+        }
+
+        while (right!=null && right.getPreviousPointer()!=null) {
+            right=right.getPreviousPointer();
+        }
+
+        try {
+            if (null != left) {
+                left.setNextPointer(node);
+                node.setPreviousPointer(left);
+            }
+
+            if (null != right) {
+                right.setPreviousPointer(node);
+                node.setNextPointer(right);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return;
+
+        // -- Crux of the logic end --
+
+    }
+
+    /**
      * Entry point
      * @param args
      */
@@ -542,15 +597,42 @@ public class BinarySearchTree {
         bst1.root = bst1.insert(bst1.root, 3);
         bst1.add(4);
         bst1.add(7);
-        bst1.delete(2);
+        //bst1.delete(2);
         bst1.add(20);
         bst1.add(19);
         bst1.add(21);
 
-        //bst.displayInOrderTree();
-        //bst1.displayInOrderTree();
+        bst.displayInOrderTree();
+        bst1.displayInOrderTree();
 
         System.out.println("Both trees isomorphism is : "+isIsomorphic(bst.root, bst1.root));
+
+        System.out.println("ConvertedDll : ");
+
+        Node temp = bst1.root;
+
+        while (null!=temp.getPreviousPointer()) {
+            temp = temp.getPreviousPointer();
+        }
+
+        try {
+            bst1.convertToDll(bst1.root);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        bst1.root=temp;
+
+        System.out.println(" Doubly linked list : ");
+
+        Node temp1 = bst1.root;
+
+        System.out.println("");
+        while (temp1!=null) {
+            System.out.print(temp1.getData().getInfo()+"  ");
+            temp1=temp1.getNextPointer();
+        }
+        System.out.println("");
 
     }
 
