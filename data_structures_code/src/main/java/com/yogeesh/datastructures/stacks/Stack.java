@@ -6,7 +6,7 @@ import com.yogeesh.datastructures.common.Node;
 import java.util.ArrayList;
 
 /**
- * Created by yogeesh.srkvs@gmail.com on 8/15/17.
+ * @author : yogeesh.srkvs@gmail.com
  */
 public class Stack {
     int top=-1;

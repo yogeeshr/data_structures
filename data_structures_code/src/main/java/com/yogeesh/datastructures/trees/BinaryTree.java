@@ -3,7 +3,7 @@ package com.yogeesh.datastructures.trees;
 import com.yogeesh.datastructures.common.Node;
 
 /**
- * Created by yogeesh.srkvs@gmail.com on 7/30/17.
+ * @author : yogeesh.srkvs@gmail.com
  * For Simplicity preserved logic of binary tree creation same as BST
  */
 public class BinaryTree extends BinarySearchTree {
@@ -99,13 +99,13 @@ public class BinaryTree extends BinarySearchTree {
         binaryTree.add(18);
 
         System.out.println(" In Order Traversal ");
-        binaryTree.displayInOrderTree();
+        TreeUtil.showInOrder(binaryTree.root);
 
         System.out.println(" Post Order Traversal ");
-        binaryTree.displayPostOrderTree();
+        TreeUtil.showPostOrder(binaryTree.root);
 
         System.out.println(" Pre Order Traversal ");
-        binaryTree.displayPreOrderTree();
+        TreeUtil.showPreOrder(binaryTree.root);
 
         binaryTree.delete(12);
 
@@ -113,17 +113,17 @@ public class BinaryTree extends BinarySearchTree {
         //Mirror in place
         binaryTree.makeMirror(binaryTree.root);
 
-        binaryTree.displayInOrderTree();
+        TreeUtil.showInOrder(binaryTree.root);
 
         System.out.println(" Un-Mirrored Tree Traversal [ Ideally reverse in order traversal ] - Decreasing order . . .  ");
         //Correcting mirror made
         binaryTree.makeMirror(binaryTree.root);
 
-        binaryTree.displayInOrderTree();
+        TreeUtil.showInOrder(binaryTree.root);
 
 
         System.out.println(" Spiral Traversal of Tree . . . ");
-        int height = binaryTree.heightOfTree(binaryTree.root);
+        int height = TreeUtil.heightOfTree(binaryTree.root);
 
         Boolean leftToRight = false;
         for (int i=1; i<=height; i++) {

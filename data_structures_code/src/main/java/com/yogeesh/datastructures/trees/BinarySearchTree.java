@@ -6,12 +6,11 @@ import com.yogeesh.datastructures.common.Node;
 import java.util.ArrayList;
 
 /**
- * Created by yogeesh.srkvs@gmail.com on 7/29/17.
+ * @author : yogeesh.srkvs@gmail.com
  */
 public class BinarySearchTree {
 
     public Node root = null;
-    Node head;
 
     // Initialize previously visited node as NULL. This is
     // static so that the same value is accessible in all recursive
@@ -215,118 +214,6 @@ public class BinarySearchTree {
 
         return node;
 
-    }
-
-    /**
-     * Method to print tree Pre Order
-     */
-    public void displayPreOrderTree() {
-        showPreOrder(this.root);
-    }
-
-    /**
-     * Method to show tree In Order
-     *
-     * @param node
-     * @return
-     */
-    private Node showPreOrder(Node node) {
-
-        if (null == node) {
-            return node;
-        }
-
-        System.out.println("| [ " + node.getData().getInfo() + " ] | Next : "+
-                ((node.getNextPointer()!=null)? node.getNextPointer().getData().getInfo(): "null") +"| Prev : "
-                + ((node.getPreviousPointer()!=null)? node.getPreviousPointer().getData().getInfo(): "null") );
-
-        showPreOrder(node.getPreviousPointer());
-        showPreOrder(node.getNextPointer());
-
-        return null;
-    }
-
-
-    /**
-     * Method to print tree Post Order
-     */
-    public void displayPostOrderTree() {
-        showPostOrder(this.root);
-    }
-
-    /**
-     * Method to show tree Post Order
-     *
-     * @param node
-     * @return
-     */
-    private Node showPostOrder(Node node) {
-
-        if (null == node) {
-            return node;
-        }
-
-        showPostOrder(node.getPreviousPointer());
-        showPostOrder(node.getNextPointer());
-        System.out.println("| [ " + node.getData().getInfo() + " ] | ");
-
-        return null;
-    }
-
-    /**
-     * Method to print tree In Order
-     */
-    public void displayInOrderTree() {
-        showInOrder(this.root);
-    }
-
-    /**
-     * Method to show tree In Order
-     *
-     * @param node
-     * @return
-     */
-    private Node showInOrder(Node node) {
-
-        if (null == node) {
-            return node;
-        }
-
-        showInOrder(node.getPreviousPointer());
-        System.out.println("| [ " + node.getData().getInfo() + " ] | ");
-        showInOrder(node.getNextPointer());
-
-        return null;
-    }
-
-    /**
-     * Method to find max of tree
-     * @param a
-     * @param b
-     * @return
-     */
-    private int max(int a, int b) {
-        if (a>b) {
-            return a;
-        } else {
-            return b;
-        }
-    }
-
-    /**
-     * Method to find height of tree
-     * @param node
-     * @return
-     */
-    public int heightOfTree(Node node){
-
-        if (null==node) {
-            return 0;
-        }
-
-        int height = max(heightOfTree(node.getPreviousPointer()), heightOfTree(node.getNextPointer()));
-
-        return height+1;
     }
 
     /**
@@ -555,22 +442,22 @@ public class BinarySearchTree {
         bst.add(7);
 
         System.out.println(" In Order Traversal ");
-        bst.displayInOrderTree();
+        TreeUtil.showPreOrder(bst.root);
 
         System.out.println(" Post Order Traversal ");
-        bst.displayPostOrderTree();
+        TreeUtil.showPostOrder(bst.root);
 
         System.out.println(" Pre Order Traversal ");
-        bst.displayPreOrderTree();
+        TreeUtil.showPreOrder(bst.root);
 
         bst.delete(2);
         System.out.println(" Pre Order Traversal After removing [2] root element ");
-        bst.displayInOrderTree();
+        TreeUtil.showPreOrder(bst.root);
 
-        System.out.println(" Height of the tree is [ "+bst.heightOfTree(bst.root)+" ]");
+        System.out.println(" Height of the tree is [ "+TreeUtil.heightOfTree(bst.root)+" ]");
 
         // Level Order Traversal
-        for (int i=1; i<=bst.heightOfTree(bst.root); i++) {
+        for (int i=1; i<=TreeUtil.heightOfTree(bst.root); i++) {
             System.out.println(" Traversing Level : "+i);
             bst.traverseLevel(bst.root, i);
         }
@@ -586,7 +473,7 @@ public class BinarySearchTree {
 
         System.out.println("LCA Generic : "+((null!=n)? n.getData().getInfo(): " No Common ancestor"));
 
-        bst.displayInOrderTree();
+        TreeUtil.showPreOrder(bst.root);
 
         BinarySearchTree bst1 = new BinarySearchTree();
 
@@ -602,8 +489,8 @@ public class BinarySearchTree {
         bst1.add(19);
         bst1.add(21);
 
-        bst.displayInOrderTree();
-        bst1.displayInOrderTree();
+        TreeUtil.showPreOrder(bst.root);
+        TreeUtil.showInOrder(bst1.root);
 
         System.out.println("Both trees isomorphism is : "+isIsomorphic(bst.root, bst1.root));
 

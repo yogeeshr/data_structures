@@ -1,7 +1,7 @@
 package com.yogeesh.datastructures.common;
 
 /**
- * Created by yogeesh.srkvs@gmail.com on 7/29/17.
+ * @author : yogeesh.srkvs@gmail.com
  */
 public class Data {
     int info;

@@ -3,9 +3,10 @@ package com.yogeesh.datastructures.heaps;
 import com.yogeesh.datastructures.common.Data;
 import com.yogeesh.datastructures.common.Node;
 import com.yogeesh.datastructures.trees.BinaryTree;
+import com.yogeesh.datastructures.trees.TreeUtil;
 
 /**
- * Created by yogeesh.srkvs@gmail.com on 8/19/17.
+ * @author : yogeesh.srkvs@gmail.com
  */
 public class Heap extends BinaryTree{
 
@@ -141,7 +142,7 @@ public class Heap extends BinaryTree{
                 trial.setPreviousPointer(null);
             }
 
-            displayPreOrderTree();
+            TreeUtil.showPreOrder(root);
 
             heapify(root);
 
@@ -182,13 +183,13 @@ public class Heap extends BinaryTree{
         heap.add(20);
         heap.add(22);
 
-        heap.displayPreOrderTree();
+        TreeUtil.showPreOrder(heap.root);
 
         heapify(heap.root);
 
         System.out.println(" - - - ");
 
-        heap.displayPreOrderTree();
+        TreeUtil.showPreOrder(heap.root);
 
         System.out.println(" - - - ");
 
@@ -196,7 +197,7 @@ public class Heap extends BinaryTree{
 
         System.out.println(" - - - ");
 
-        heap.displayPreOrderTree();
+        TreeUtil.showPreOrder(heap.root);
 
     }
 

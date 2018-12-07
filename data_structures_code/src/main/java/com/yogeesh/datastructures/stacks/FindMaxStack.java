@@ -4,7 +4,7 @@ import com.yogeesh.datastructures.common.Data;
 import com.yogeesh.datastructures.common.Node;
 
 /**
- * Created by yogeesh.srkvs@gmail.com on 8/15/17.
+ * @author : yogeesh.srkvs@gmail.com
  */
 public class FindMaxStack extends Stack {
 
