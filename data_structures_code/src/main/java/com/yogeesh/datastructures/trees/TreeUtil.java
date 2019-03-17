@@ -151,4 +151,35 @@ public class TreeUtil {
 
     }
 
+    /**
+     * MEthod to print all pairs greater than or Equal to k in BST
+     * @param root
+     * @param ele
+     */
+    public static int getMePairGreaterThanKInBST(Node root, int k, int ele) {
+
+        if (root==null) {
+            return -1;
+        }
+
+        if (root.getPreviousPointer()==null && ele>=0 && root.getData().getInfo()-ele>=k) {
+            System.out.println(root.getData().getInfo()+" | "+ele);
+        }
+
+        int left =  getMePairGreaterThanKInBST(root.getPreviousPointer(), k, ele);
+
+        if (left !=-1 && root.getData().getInfo()-left>=k) {
+            System.out.println(root.getData().getInfo()+" | "+left);
+        }
+
+        int right =  getMePairGreaterThanKInBST(root.getNextPointer(), k, root.getData().getInfo());
+
+        if (-1!=right) {
+            return right;
+        }
+
+        return root.getData().getInfo();
+
+    }
+
 }

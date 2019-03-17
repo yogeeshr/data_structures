@@ -494,6 +494,10 @@ public class BinarySearchTree {
 
         System.out.println("Both trees isomorphism is : "+isIsomorphic(bst.root, bst1.root));
 
+
+        System.out.println("Node whose value - just smaller element value is greater than or equal to 2 : ");
+        TreeUtil.getMePairGreaterThanKInBST(bst1.root, 1, -1);
+
         System.out.println("ConvertedDll : ");
 
         Node temp = bst1.root;
