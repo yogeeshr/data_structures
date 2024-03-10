@@ -1,41 +1,19 @@
 # Data structures implementation details below
 
-## Trees 
-
-### BinarySearchTree.java ( Implementation of Binary Search Tree )
-
-* Add
-* Delete
-* In Order Traversal
-* Pre Order Traversal
-* Post Order Traversal
-* Height of Tree
-* Level order traversal
-* Least common ancestor
-* Isomorphism of tree
-* Convert to DLL
-
-### BinaryTree.java ( Implementation of Binary Tree )
-
-* Mirror binary tree in place
-* Zig zag traversal
-* Left view of tree
-
-
-## Lists
-
-### SinglyLinkedList.java ( Implementation of Singly Linked List )
-
-## Stacks
-
-### Stack.java
-
-* Common push pop peek
-
-### FindMinStack.java
-
-* Find Min in O(1)
-
-### FindMaxStack.java
-
-* Find max in O(1)
+                ├── Lists
+                │ └── SinglyLinkedList.java
+                ├── common
+                │ ├── Data.java
+                │ └── Node.java
+                ├── heaps
+                │ └── Heap.java
+                ├── stacks
+                │ ├── FindMaxStack.java
+                │ ├── FindMinStack.java
+                │ └── Stack.java
+                └── trees
+                    ├── BinarySearchTree.java
+                    ├── BinaryTree.java
+                    ├── GetCountOfUnivalTrees.java
+                    ├── GetMaxBSTinBinaryTree.java
+                    └── TreeUtil.java
